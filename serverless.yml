@@ -1,0 +1,25 @@
+service: test
+frameworkVersion: "4"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-south-1
+  timeout: 30
+
+functions:
+  getUserData:
+    handler: handler.getUserData
+    events:
+      - httpApi:
+          path: /getUserData
+          method: get
+  createNewUser:
+    handler: handler.createNewUser
+    events:
+      - httpApi:
+          path: /createNewUser
+          method: post
+
+plugins:
+  - serverless-offline
