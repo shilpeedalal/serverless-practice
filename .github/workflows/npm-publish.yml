@@ -22,9 +22,12 @@ jobs:
     
     - run: npm install
     
-    - run: npm install -g serverless@4
+    - run: npm install -g serverless@3
 
-    - run: ls -a
+    - name: Authenticate with Serverless
+      run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - run: serverless login --token ${{ secrets.SERVERLESS_ACCESS_KEY }}
 
     - name: Deploy with Serverless
       run: serverless deploy --config serverless.yml
