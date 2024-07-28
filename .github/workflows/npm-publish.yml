@@ -22,7 +22,7 @@ jobs:
     
     - run: npm install
     
-    - run: npm install -g serverless@3
+    - run: npm install -g serverless@4
 
     - name: Configure AWS credentials
       run: |
