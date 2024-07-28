@@ -6,16 +6,22 @@ provider:
   runtime: nodejs20.x
   region: ap-south-1
   timeout: 30
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
 
 functions:
   getUserData:
     handler: handler.getUserData
+    environment:
+      MONGO_URI: ${self:provider.environment.MONGO_URI}
     events:
       - httpApi:
           path: /getUserData
           method: get
   createNewUser:
     handler: handler.createNewUser
+    environment:
+      MONGO_URI: ${self:provider.environment.MONGO_URI}
     events:
       - httpApi:
           path: /createNewUser
