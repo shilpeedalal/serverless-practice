@@ -14,7 +14,7 @@ export const getUserData = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "User details",
+      message: "User details successfully fetched",
       data: response
     }),
   };
@@ -37,7 +37,7 @@ export const createNewUser = async (event) => {
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: "User details successfully created",
+      message: "User details successfully created!",
       data: response
     }),
   };
