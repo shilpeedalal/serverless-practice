@@ -38,3 +38,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         MONGO_URI: ${{ secrets.MONGO_URI}}
+    - name: Print MONGO_URI for Debugging
+      run: echo ${{ secrets.MONGO_URI}}
