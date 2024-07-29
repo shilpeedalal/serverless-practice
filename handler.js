@@ -45,11 +45,11 @@ export const createNewUser = async (event) => {
 
 export const deleteExistingUser = async(event) => {
   console.log("delete api started");
-  let { emailId } = JSON.parse(event.body)
+  let { email } = JSON.parse(event.body)
   console.log(emailId);
 
   await connectDb()
-  const response = await deleteUser({email:emailId}) 
+  const response = await deleteUser({email}) 
   console.log("Response", response);
   if(!response){
     return{
