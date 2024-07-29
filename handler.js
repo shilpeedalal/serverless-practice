@@ -49,7 +49,7 @@ export const deleteExistingUser = async(event) => {
   console.log(emailId);
 
   await connectDb()
-  const response = await deleteUser(emailId)
+  const response = await deleteUser({email:emailId}) 
   console.log("Response", response);
   if(!response){
     return{
