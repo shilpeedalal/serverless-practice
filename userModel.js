@@ -47,3 +47,18 @@ export const createUser = async (input) => {
     return null;
   }
 };
+
+export const deleteUser = async(input) => {
+  try{
+    const existingUser = new userModel(input);
+
+    const result = await existingUser.deleteOne(input)
+    if(!result){
+      return null;
+    }
+
+    return result;
+  } catch(error){
+    return null;
+  }
+}

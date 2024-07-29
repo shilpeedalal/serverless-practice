@@ -1,5 +1,5 @@
 import { connectDb } from "./dbConnection.js";
-import { createUser, getUsers } from "./userModel.js";
+import { createUser, deleteUser, getUsers } from "./userModel.js";
 
 export const getUserData = async (event) => {
   console.log("getUserData function started");
@@ -42,3 +42,26 @@ export const createNewUser = async (event) => {
     }),
   };
 };
+
+export const deleteExistingUser = async(event) => {
+  console.log("delete api started");
+  let userId = JSON.parse(event.email)
+  console.log(userId);
+
+  await connectDb()
+  const response = await deleteUser(userId)
+  console.log("Response", response);
+  if(!response){
+    return{
+      statusCode: 400,
+      message: 'user not found'
+    }
+  }
+  return{
+    statusCode: 200,
+    body: JSON.stringify({
+      message : 'User successfully deleted',
+      data: response
+    })
+  }
+}

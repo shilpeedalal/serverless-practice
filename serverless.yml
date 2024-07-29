@@ -26,6 +26,14 @@ functions:
       - httpApi:
           path: /createNewUser
           method: post
+  deleteExistingUser:
+    handler: handler.deleteExistingUser
+    environment:
+      MONGO_URI: ${self:provider.environment.MONGO_URI}
+    events:
+      - httpApi:
+          path: /deleteExistingUser
+          method: delete
 
 plugins:
   - serverless-offline
