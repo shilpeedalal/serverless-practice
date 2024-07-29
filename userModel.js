@@ -50,13 +50,10 @@ export const createUser = async (input) => {
 
 export const deleteUser = async(input) => {
   try{
-    const existingUser = new userModel();
-
-    const result = await existingUser.deleteOne(input)
+    const result = await userModel.deleteOne(input)
     if(!result){
       return null;
     }
-
     return result;
   } catch(error){
     return null;
